@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <title>Number's Test</title>
+  <meta name="author" content="Thomas List">
+  <link rel="stylesheet" type="text/css" media="all" href="styles.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+     function myFunction() {
+         var number = document.getElementById("number").value;
+         // Returns successful data submission message when the entered information is stored in database.
+         var dataString = 'number1=' + number;
+         if (number == '') {
+             alert("Please Enter a Number");
+        } else {
+             // AJAX code to submit form.
+             $.ajax({
+                     type: "POST",
+                      url: "validate.php",
+                     data: dataString,
+                     cache: false,
+                     success: function(html) {
+                         alert(html);
+                     }
+                    });
+                }
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+  <nav id="fixedbar">
+    <ul id="fixednav">
+      <li><a href="http://www.google.com">Google</a></li>
+      <li><a href="http://www.biznow.com">Biznow</a></li>
+      <!--<li><a href="#">Community</a></li>
+      <li><a href="#">Staff Members</a></li>
+      <li><a href="#">Contact</a></li>-->
+    </ul>
+  </nav>
+  
+  <div id="w">
+    <header id="logo"><a href="index.html">Number's Test</a></header>
+    
+    <nav id="navigation">
+      <ul>
+        <li><a href="http://www.google.com">Google</a></li>
+      <li><a href="http://www.biznow.com">Biznow</a></li>
+      <!--<li><a href="#">Community</a></li>
+      <li><a href="#">Staff Members</a></li>
+      <li><a href="#">Contact</a></li>-->
+      </ul>
+    </nav>
+    
+    <div id="content">
+	 <form id="form" name="form">
+     <label>Number :</label>
+     <input id="number" type="number">
+     <input id="submit" onclick="myFunction()" type="button" value="Submit">
+     </form> 
+	</div>
+   </div>
+
+</body>
+</html>

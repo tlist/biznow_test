@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Number's Test</title>
+<link href="styles.css" rel="stylesheet" type="text/css" media="screen">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+     function myFunction() {
+         var number = document.getElementById("number").value;
+         // Returns successful data submission message when the entered information is stored in database.
+         var dataString = 'number1=' + number;
+         if (number == '') {
+             alert("Please Enter a Number");
+        } else {
+             // AJAX code to submit form.
+             $.ajax({
+                     type: "POST",
+                      url: "validate.php",
+                     data: dataString,
+                     cache: false,
+             		  success: function(response) {
+                      $('#form').html("<div id='message'></div>");
+                      $('#message').html("<h2>Number's Test Submitted!</h2>")
+                      .append("<p>We will be in touch soon.</p>")
+                      .hide()
+                      .fadeIn(1500, function() {
+                     $('#message').append("<img id='checkmark' src='images/check.png' />");
+					 $('#message').append("<p>" + response + "<p>");
+      });
+    }
+  });
+  }
+            return false;
+        }
+    </script>	
+</head>
+<body>
+	<header>
+		<nav class="wrapper">
+			<ul>
+				<li class="logo"><a href="http://www.google.com">Google</a></li>
+				<li><a href="http://www.biznow.com">Biznow</a></li>				
+			</ul>
+		</nav>
+	</header>
+	<section id="content-main" class="wrapper clear">
+		<div class="col-2-3">
+		   <form id="form" name="form">
+           <label>Number :</label>
+           <input id="number" type="number">
+           <input id="submit" onclick="myFunction()" type="button" value="Submit">
+		   </div>
+		</div>
+	</section>
+	<footer class="wrapper">
+		<div class="col-1">
+			<p>Bisnow Media 2016</p>
+		</div>
+		<div class="col-2">
+		    <p>Thomas List</p> 
+	</footer>
+</body>
+</html>
+			
